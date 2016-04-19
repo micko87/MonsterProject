@@ -12,11 +12,10 @@ package com.sqa.MA.util.helpers;
 
 import java.util.Scanner;
 
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
-import org.junit.Ignore;
-import org.junit.Test;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
 
 /**
  * RequestInputTests //ADDD (description of class)
@@ -63,7 +62,7 @@ public class RequestInputTests {
 	 * @param question
 	 * @param userValue
 	 */
-	@After
+	@AfterMethod
 	public void displayOutput() {
 		System.out.println("For the question \"" + question + "\", you have given the value of (" + userValue + ")");
 
@@ -73,8 +72,7 @@ public class RequestInputTests {
 	 * Test method for
 	 * {@link com.sqa.MA.util.helpers.RequestInput#getChar(java.lang.String)}.
 	 */
-	@Test
-	@Ignore
+	@Test(enabled = false)
 	public void testGetCharString() {
 
 	}
@@ -84,8 +82,7 @@ public class RequestInputTests {
 	 * {@link com.sqa.MA.util.helpers.RequestInput#getChar(java.lang.String, char[])}
 	 * .
 	 */
-	@Test
-	@Ignore
+	@Test(enabled = false)
 	public void testGetCharStringCharArray() {
 
 	}
@@ -94,8 +91,7 @@ public class RequestInputTests {
 	 * Test method for
 	 * {@link com.sqa.MA.util.helpers.RequestInput#getDouble(java.lang.String)}.
 	 */
-	@Test
-	@Ignore
+	@Test(enabled = false)
 	public void testGetDouble() {
 
 	}

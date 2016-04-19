@@ -10,13 +10,12 @@
 
 package com.sqa.MA.util.helpers.math;
 
+import static org.testng.Assert.assertEquals;
+
 import java.util.Arrays;
 
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
-import org.junit.runners.Parameterized.Parameters;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
 
 import com.sqa.MA.util.helpers.MyMath;
 
@@ -32,10 +31,10 @@ import com.sqa.MA.util.helpers.MyMath;
  * @since 1.0
  *
  */
-@RunWith(Parameterized.class)
+
 public class MultiplicationTests {
 
-	@Parameters
+	@DataProvider
 	public static Object[][] getData() {
 		Object[][] data = { { new double[] { 2.0, 3.0, 4.0, 2.0 }, 50 }, { new double[] { 2.0, 1.0, 5.0 }, 10.0 },
 				{ new double[] { 3.0, 1.5 }, 4.5 }, { new double[] { 0.0, 5.0, 15.0, 10.0 }, 0.0 },
@@ -45,25 +44,26 @@ public class MultiplicationTests {
 
 	}
 
-	private double expectedResult;
-	private double[] numbers;
+	// private double expectedResult;
+	// private double[] numbers;
+	//
+	// public MultiplicationTests(double[] number, double expextedResult) {
+	//
+	// this.expectedResult = expextedResult;
+	// this.numbers = number;
+	//
+	// }
 
-	public MultiplicationTests(double[] number, double expextedResult) {
-
-		this.expectedResult = expextedResult;
-		this.numbers = number;
-
-	}
-
-	@Test
-	public void testMultiplication() {
-		double actualResult = MyMath.multNumbers(this.numbers);
-		String numbersString = Arrays.toString(this.numbers);
+	@Test(dataProvider = "getData")
+	public void testMultiplication(double[] number, double expextedResult) {
+		double actualResult = MyMath.multNumbers(number);
+		String numbersString = Arrays.toString(number);
 		String message = String.format(
 				"Error: The result of multiplying all numbers %s is actully  %.2f not exxpected,", numbersString,
 				actualResult);
 		System.out.println(message);
-		Assert.assertEquals(message, this.expectedResult, actualResult, 2.0);
+		assertEquals(actualResult, expextedResult, 2.0, message);
+
 	}
 
 }
